@@ -147,8 +147,9 @@ type ChatCompletionResponse struct {
 // CreateChatCompletion — API call to Create a completion for the chat message.
 func (c *Client) CreateChatCompletion(
 	ctx context.Context,
-	request ChatCompletionRequest,
+	requestParam any,
 ) (response ChatCompletionResponse, err error) {
+	request := requestParam.(ChatCompletionRequest)
 	if request.Stream {
 		err = ErrChatCompletionStreamNotSupported
 		return
@@ -160,7 +161,7 @@ func (c *Client) CreateChatCompletion(
 		return
 	}
 
-	req, err := c.newRequest(ctx, http.MethodPost, c.fullURL(urlSuffix, request.Model), withBody(request))
+	req, err := c.newRequest(ctx, http.MethodPost, c.fullURL(urlSuffix, request.Model), withBody(requestParam))
 	if err != nil {
 		return
 	}
