@@ -88,7 +88,7 @@ type ChatCompletionRequest struct {
 	User         string               `json:"user,omitempty"`
 	Functions    []FunctionDefinition `json:"functions,omitempty"`
 	FunctionCall any                  `json:"function_call,omitempty"`
-	chatId       string               `json:"chatId"`
+	ChatId       string               `json:"chatId"`
 }
 
 type FunctionDefinition struct {
