@@ -88,6 +88,7 @@ type ChatCompletionRequest struct {
 	User         string               `json:"user,omitempty"`
 	Functions    []FunctionDefinition `json:"functions,omitempty"`
 	FunctionCall any                  `json:"function_call,omitempty"`
+	chatId       string               `json:"chatId"`
 }
 
 type FunctionDefinition struct {
@@ -142,7 +143,6 @@ type ChatCompletionResponse struct {
 	Model   string                 `json:"model"`
 	Choices []ChatCompletionChoice `json:"choices"`
 	Usage   Usage                  `json:"usage"`
-	chatId  string                 `json:"chatId"`
 }
 
 // CreateChatCompletion — API call to Create a completion for the chat message.
